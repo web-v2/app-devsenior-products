@@ -1,0 +1,32 @@
+<div class="form-container">
+    <h2>Formulario de Producto</h2>
+  
+    <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" type="text" formControlName="nombre">
+        <!-- El `@if` es la nueva sintaxis para mostrar u ocultar elementos -->
+        @if (productoForm.get('nombre')?.invalid && productoForm.get('nombre')?.touched) {
+          <p class="error-message">El nombre es obligatorio.</p>
+        }
+      </div>
+  
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input id="precio" type="number" formControlName="precio">
+        @if (productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched) {
+          <p class="error-message">El precio es obligatorio y debe ser un número positivo.</p>
+        }
+      </div>
+  
+      <div class="form-group">
+        <label for="imagenUrl">URL de la Imagen:</label>
+        <input id="imagenUrl" type="text" formControlName="imagenUrl">
+        @if (productoForm.get('imagenUrl')?.invalid && productoForm.get('imagenUrl')?.touched) {
+          <p class="error-message">La URL de la imagen es obligatoria.</p>
+        }
+      </div>
+  
+      <button type="submit" [disabled]="!productoForm.valid">Guardar Producto</button>
+    </form>
+  </div>
