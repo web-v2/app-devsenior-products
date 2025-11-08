@@ -55,3 +55,16 @@
   .delete-button:active {
     background-color: #bd2130;
   }
+
+  .edit-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #4b3deb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }

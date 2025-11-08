@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Producto } from '../../interfaces/producto'; // Importamos la interfaz Producto
 import { ProductoService } from '../../services/producto.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-producto-card',
@@ -17,10 +18,17 @@ export class ProductoCardComponent {
   // EventEmitter para notificar al componente padre cuando se elimina un producto
   @Output() productoEliminado = new EventEmitter<number>();
 
+  router: Router = inject(Router);
+
   constructor(private productoService: ProductoService) {}
 
   eliminar(): void {
     this.productoService.deleteProduct(this.producto.id);
     this.productoEliminado.emit(this.producto.id);
+  }
+
+  editar(): void{
+    const id = this.producto.id    
+    this.router.navigate([`productos/${id}`])
   }
 }

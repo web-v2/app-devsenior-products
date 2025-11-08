@@ -1,5 +1,5 @@
 <div class="form-container">
-    <h2>Formulario de Producto</h2>
+    <h2>{{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
   
     <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -27,6 +27,8 @@
         }
       </div>
   
-      <button type="submit" [disabled]="!productoForm.valid">Guardar Producto</button>
+      <button type="submit" [disabled]="!productoForm.valid">
+        {{ isEditMode ? 'Actualizar Producto' : 'Guardar Producto' }}
+      </button>
     </form>
   </div>

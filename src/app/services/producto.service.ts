@@ -53,6 +53,17 @@ export class ProductoService {
     this.productos.push(producto);
   }
 
+  getProductoById(id: number): Producto | undefined {
+    return this.productos.find(producto => producto.id === id);
+  }
+
+  updateProducto(productoActualizado: Producto): void {
+    const index = this.productos.findIndex(producto => producto.id === productoActualizado.id);
+    if (index !== -1) {
+      this.productos[index] = productoActualizado;
+    }
+  }
+
   deleteProduct(id: number): void {
     this.productos = this.productos.filter(producto => producto.id !== id);
   }
